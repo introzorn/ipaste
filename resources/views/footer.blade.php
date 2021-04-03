@@ -1,5 +1,5 @@
 <div class="footer">
 
-Introzorn &copy;
+Introzorn &copy; {{ date("Y")}}
 
 </div>
