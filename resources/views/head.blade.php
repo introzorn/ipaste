@@ -2,7 +2,7 @@
 
 
 
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto;background:#565656;display:block;position:absolute" width="100%" height="150" preserveAspectRatio="xMidYMid" viewBox="0 0 100% 150">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="z-index:-1;margin:auto;background:rgb(241, 241, 241);display:block;position:absolute" width="100%" height="500" preserveAspectRatio="xMidYMid" viewBox2="0 0 100% 900">
         <g transform="translate(802,133.5) scale(1,1) translate(-802,-133.5)"><defs><filter id="blur-z0txlnb2qn-1" x="-1" y="-1" width="3" height="3">
           <feGaussianBlur stdDeviation="3"></feGaussianBlur>
         </filter><filter id="blur-z0txlnb2qn-2" x="-1" y="-1" width="3" height="3">
@@ -86,13 +86,19 @@
 
 
 
+<div style="position:absolute; display:block; z-index:-1; margin:auto; left:0px; bottom:-350px; width:100%; height:200px; background-image: linear-gradient(rgb(241, 241, 241,0), rgba(241,241,241));">
+</div>
 
 
 
 
 
+  <div style="position:absolute; display:block; z-index:1; margin:auto; right:20px; top:50px;">
+<div style="text-align:right" class="link-light fs-6 ">
+<a href="#" class="link-light fs-6 btn3">⎆ вход</a> ||
+<a href="#" class="link-light fs-6 btn3">регистрация</a>
+</div><br>
 
-<div style="position:absolute; display:block; z-index:1; margin:auto; right:20px; top:70px;">
 <a href="{{ route('main') }}" class="btn btn-outline-light btn2"> Главная</a>
 <a href="{{ route('pasteadd') }}" class="btn btn-outline-light btn2">Создать Пасту</a>
 <a href="{{ route('about') }}" class="btn btn-outline-light btn2">О проекте</a>

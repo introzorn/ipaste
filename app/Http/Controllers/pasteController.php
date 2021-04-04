@@ -52,11 +52,11 @@ class pasteController extends Controller
 
 
     public function viewPasta(string $id){
-        if($id==''){return false;} //на всякий случай проверяем если id пустой
+        if($id==''){return view('p404');} //на всякий случай проверяем если id пустой
 
         $pasta = new paste;
         $pdata=$pasta->where('alias',$id)->first();
-        if(!$pdata) {return false;}   //заглушка если элемент не найден
+        if(!$pdata) {return view('p404');}   //заглушка если элемент не найден
         $datastring='Всегда';
         if($pdata->expiration>0){$datastring='до '.date("H:i:s m.d.Y");}
         $userstring='';

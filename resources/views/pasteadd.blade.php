@@ -31,9 +31,9 @@
         <script>
             var stype={"php":"application/x-httpd-php","":""};
             var myCodeMirror = CodeMirror($('#codebox').get(0), {lineNumbers: true,
-
+                    name: 'npcode'
             });
-
+            myCodeMirror.on('change',function(){$("#pcode").val(myCodeMirror.getValue());});
             </script>
 
         <textarea class="form-control" aria-label=""  style="min-height: 200px; display:none" name="pcode" id="pcode" ></textarea>
