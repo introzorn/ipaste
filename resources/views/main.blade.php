@@ -4,12 +4,12 @@
 @section('content')
 
     @include('head')
-
-
-<h1>Все доступные для вас пасты</h1>
+<div class="container cont1">
+<div class="row"><div class="col-9"><!-- основной блок-->
+<h3>Все Пасты проекта :</h3>
     @foreach ($allpasta as $lpasta)
 
-    <div class="alert alert-info" role="alert" style="padding:5px!important;">
+    <div class="alert alert-light border border-secondary" role="alert" style="padding:5px!important; box-shadow:0 0 5px rgb(155, 155, 155)">
         <b>{{$lpasta->name}}</b>
              <pre id="hlight2" class="brush: {{ $lpasta->codetype }}" >
              {{mb_substr($lpasta->code,0,255,'UTF-8')}}...
@@ -34,9 +34,15 @@
 
 
 
-
-
     @endforeach
+
+</div>
+<div class="col-3"> <!-- боковой блок -->
+
+@include('rblock')
+</div>
+</div>
+</div>
 
     {{$allpasta->links()}}
 

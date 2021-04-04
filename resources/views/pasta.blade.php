@@ -7,12 +7,13 @@
 
     @include('head')
 
-<div>
+<div class="container cont1">
+<div class="row"><div class="col-9"><!-- основной блок-->
 
 
 
 
-   <h1 style="text-align:center"> {{ $pdata->name }} </h1>
+   <h3 style="text-align:center"> {{ $pdata->name }} </h3>
 
 
 
@@ -29,10 +30,7 @@
 
 
  <pre id="hlight" class="brush: {{ $pdata->codetype }}" >{{ $pdata->code }}</pre>
- <style>
- #hlight{max-height: 500px!important;}
-  #hlight > .syntaxhighlighter{max-height: 500px!important;}
- </style>
+
 
 <div class="input-group mb-3">
     <span class="input-group-text" id="basic-addon1">Урл адресс пасты :</span>
@@ -41,34 +39,12 @@
 
 
 </div>
-<br><hr>
-<h2>Последние 10 паст</h2>
+<div class="col-3"> <!-- боковой блок -->
 
-
-
-
-    @foreach (App\Http\Controllers\pasteController::getLastPaste() as $lpasta)
-    <div class="alert alert-dark" role="alert" style="padding:5px!important;">
-        <b>{{$lpasta->name}}</b>
-
-        <div class="row">
-            <div class="col-sm">
-                @if ($lpasta->user!='')
-                 Пользователь: {{$lpasta->user}} <br>
-                @endif
-
-                Дата создания: {{ date("d.m.Y",$lpasta->utime) }}<br>
-                Тип Пасты: {{ $lpasta->codetype }}
-
-
-            </div>
-            <div class="col-sm">
-              <a class="btn btn-sm btn-primary" style="float:right; margin:10px" href="{{route('alias',$lpasta->alias)}}" role="button">Посмотреть»</a>
-            </div>
-        </div>
-
-    </div>
-    @endforeach
+@include('rblock')
+</div>
+</div>
+</div>
 
 
 

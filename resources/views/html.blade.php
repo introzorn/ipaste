@@ -14,6 +14,11 @@
 <script class="javascript" src="public/shl/scripts/shLegacy.js"></script>
 <script class="javascript" src="public/shl/scripts/shCore.js"></script>
 <script class="javascript" src="public/shl/scripts/shMegaLang.js"></script>
+
+
+@yield('codemirror')
+
+
 <script type="text/javascript">
 SyntaxHighlighter.all();
 </script>
