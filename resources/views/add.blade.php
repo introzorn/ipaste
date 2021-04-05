@@ -84,6 +84,17 @@
                 </label>
             </div>
 
+            @if (Auth::Check())
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pview" id="flexRadioCheckedDisabled2"  value="2">
+                <label class="form-check-label" for="flexRadioCheckedDisabled2"  >
+                Доступна только вам
+                </label>
+            </div>
+            @endif
+
+
+
 
         </div>
 

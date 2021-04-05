@@ -63,9 +63,14 @@ class pasteController extends Controller
         $pasta = new paste;
         $pdata=$pasta->where('alias',$id)->first();
         if(!$pdata) {return view('p404');}   //заглушка если элемент не найден
+
+        if($pdata->view=2 && !Auth::check()){return view('p404'); }
+
+
         $datastring='Всегда';
         if($pdata->expiration>0){$datastring='до '.date("H:i:s m.d.Y");}
         $userstring='';
+        $userstring2='';
         if($pdata->user!=''){ $userstring='Пользователь:'.$pdata->user.'<br>';}
         if($pdata->user!=''){ $userstring2=$pdata->user;}
 
@@ -75,14 +80,19 @@ class pasteController extends Controller
 
  public static function getLastPaste(){
     $udat=strtotime("+0");
-    $pasta = paste::where('view',0)->where('expiration','>',$udat)->orWhere('expiration',0)->orderBy('id','desc')->take(10)->get();
+ //$pasta = paste::where('view',0)->where('expiration','>',$udat)->orWhere('expiration',0)->orderBy('id','desc')->take(10)->get();
+ $taker=10;
+ if(Auth::Check()){$taker=4;}
+    $pasta = paste::where('view',0,function($r,$udat){$r->Where('expiration','>',$udat)->orWhere('expiration',0)->get();})->orderBy('id','desc')->take($taker)->get();
     return $pasta;
  }
+
  public static function getMyLastPaste(){
     if(!Auth::check()){return [];}
     $udat=strtotime("+0");
-    $pasta = paste::where('user',Auth::User()->user)->where('expiration','>',$udat)->Where('expiration',0)->orderBy('id','desc')->take(10)->get();
-
+    //$pasta = paste::where('user',Auth::User()->user)->Where('expiration','>',$udat)->orWhere('expiration',0)->orderBy('id','desc')->take(10)->get();
+//хреновый запрос. лучше на эскюэл сделать
+    $pasta = paste::where('user',Auth::User()->user,function($r,$udat){$r->Where('expiration','>',$udat)->orWhere('expiration',0)->get();})->orderBy('id','desc')->take(10)->get();
     return $pasta;
  }
 

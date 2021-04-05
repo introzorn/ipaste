@@ -29,7 +29,7 @@
 @endif
 
 
-<div class="alert alert-dark larg" style="margin-top:10px; background-color:dimgray; color: white;" >последние 10 паст:</div>
+<div class="alert alert-dark larg" style="margin-top:10px; background-color:dimgray; color: white;" >последние @if (Auth::Check()){{4}}@else{{10}}@endif паст:</div>
 @foreach (pcont::getLastPaste() as $lpasta)
 <div class="alert alert-dark" role="alert" style="padding:5px!important; margin: 2px">
    <div style="text-overflow: ellipsis;font-size:10pt; width:100%; overflow:hidden; white-space: nowrap;"> <b>{{$lpasta->name}}</b></div>

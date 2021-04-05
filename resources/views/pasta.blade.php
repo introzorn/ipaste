@@ -18,9 +18,16 @@
 
 
     <div class="row">
+@if ($pdata->user)
+<div class="col-sm">
+<h4>Автор: {{ $pdata->user }}</h4>
+</div>
+@endif
+
+
         <div class="col-sm">
-            <h3>{{$pdata->user}}</h3>
- <h3>Тип кода :{{ strtoupper($pdata->codetype) }}</h3>
+
+ <h4>Тип кода :{{ strtoupper($pdata->codetype) }}</h4>
         </div>
         <div class="col-sm">
  <h4>Доступна: {{ $extime }}</h4>
