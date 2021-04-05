@@ -14,7 +14,7 @@ class CreatePastesTable extends Migration
     public function up()
     {
         Schema::create('pastes', function (Blueprint $table) {
-            $table->id('id');
+            $table->increments('id');
             $table->char('alias',16);
             $table->char('user',16);
             $table->char('name',255);

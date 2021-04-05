@@ -19,7 +19,7 @@
 
     <div class="row">
         <div class="col-sm">
-            {{$userstring}}
+            <h3>{{$pdata->user}}</h3>
  <h3>Тип кода :{{ strtoupper($pdata->codetype) }}</h3>
         </div>
         <div class="col-sm">

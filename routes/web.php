@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +12,29 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/mypaste', function () {
+    if(!Auth::check()){return redirect(route('main'));} //а если не залогинился
+
+    return view('mypaste');
+})->name('mypaste');
+
+Route::get('/login', function () {
+    if(Auth::check()){return redirect(route('main'));} //а может пользователь уже залогинился
+
+    return view('login');
+})->name('login');
+Route::post('/login', 'loginController@login')->name('login');
+
+
+Route::get('/reg', function () {
+    if(Auth::check()){return redirect(route('main'));} //а может пользователь уже залогинился
+    return view('reg');
+})->name('reg');
+
+Route::post('/reg', 'loginController@reg')->name('reg');
+Route::get('/logout', 'loginController@logout')->name('logout');
+
 
 Route::get('/', 'pasteController@MainCont')->name('main');
 

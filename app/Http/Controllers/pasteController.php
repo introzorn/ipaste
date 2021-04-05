@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\paste;
+use Illuminate\Support\Facades\Auth;
 
 class pasteController extends Controller
 {
@@ -34,6 +35,11 @@ class pasteController extends Controller
         $pasta->view=$val['pview'];
         $pasta->utime=strtotime("+0");
 
+       if(Auth::Check()){
+         $pasta->user=Auth::User()->user;
+       }
+
+
         if ( $val['expiration']=='0' )
         {
             $pasta->expiration=0;
@@ -61,8 +67,9 @@ class pasteController extends Controller
         if($pdata->expiration>0){$datastring='до '.date("H:i:s m.d.Y");}
         $userstring='';
         if($pdata->user!=''){ $userstring='Пользователь:'.$pdata->user.'<br>';}
+        if($pdata->user!=''){ $userstring2=$pdata->user;}
 
-        return view('pasta',['pdata'=>$pdata,'extime'=> $datastring,'userstring'=>$userstring]);
+        return view('pasta',['pdata'=>$pdata,'extime'=> $datastring,'userstring'=>$userstring,'userstring2'=>$userstring2]);
     }
 
 
@@ -71,6 +78,14 @@ class pasteController extends Controller
     $pasta = paste::where('view',0)->where('expiration','>',$udat)->orWhere('expiration',0)->orderBy('id','desc')->take(10)->get();
     return $pasta;
  }
+ public static function getMyLastPaste(){
+    if(!Auth::check()){return [];}
+    $udat=strtotime("+0");
+    $pasta = paste::where('user',Auth::User()->user)->where('expiration','>',$udat)->Where('expiration',0)->orderBy('id','desc')->take(10)->get();
+
+    return $pasta;
+ }
+
 
 public function MainCont(){
     $udat=strtotime("+0");

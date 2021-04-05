@@ -12,7 +12,7 @@
     <div class="alert alert-light border border-secondary" role="alert" style="padding:5px!important; box-shadow:0 0 5px rgb(155, 155, 155)">
         <b>{{$lpasta->name}}</b>
              <pre id="hlight2" class="brush: {{ $lpasta->codetype }}" >
-             {{mb_substr($lpasta->code,0,255,'UTF-8')}}...
+             {{ mb_substr($lpasta->code,0,255,'UTF-8') }}...
             </pre>
         <div class="row">
             <div class="col-sm">

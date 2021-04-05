@@ -95,12 +95,26 @@
 
   <div style="position:absolute; display:block; z-index:1; margin:auto; right:20px; top:50px;">
 <div style="text-align:right" class="link-light fs-6 ">
-<a href="#" class="link-light fs-6 btn3">⎆ вход</a> ||
-<a href="#" class="link-light fs-6 btn3">регистрация</a>
+
+
+@if (Auth::Check())
+<b class="link-light fs-6 btn3">{{Auth::User()->user}}</b> ||
+<a href="{{route('logout')}}" class="link-light fs-6 btn3">выход</a>
+@else
+<a href="{{route('login')}}" class="link-light fs-6 btn3">⎆ вход</a> ||
+<a href="{{route('reg')}}" class="link-light fs-6 btn3">регистрация</a>
+
+@endif
+
+
+
 </div><br>
 
 <a href="{{ route('main') }}" class="btn btn-outline-light btn2"> Главная</a>
 <a href="{{ route('add') }}" class="btn btn-outline-light btn2">Создать Пасту</a>
+@if (Auth::Check())
+<a href="{{ route('mypaste') }}" class="btn btn-outline-light btn2">Мои пасты</a>
+@endif
 <a href="{{ route('about') }}" class="btn btn-outline-light btn2">О проекте</a>
 </div>
 <div class="shapka-title"  style="">

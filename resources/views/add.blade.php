@@ -28,6 +28,10 @@
 
 <form action="{{ route('add')}}" method="post">
     @csrf
+
+
+
+
     <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-default">Введите имя Пасты</span>
