@@ -17,8 +17,16 @@
         <div class="row"><div class="col-9"><!-- основной блок-->
 
 
-<br>
-<form action="{{ route('pasteadd2')}}" method="post">
+
+
+@error('pname')
+    <div class="alert alert-danger" style="padding:0 20px 0 20px; margin:5px">Ошибка: Имя пасты должно быть больше 5 символов и меньше 255</div>
+@enderror
+@error('pcode')
+    <div class="alert alert-danger" style="padding:0 20px 0 20px; margin:5px">Ошибка: Текст пасты должен быть больше 5 символов</div>
+@enderror
+
+<form action="{{ route('add')}}" method="post">
     @csrf
     <div class="input-group mb-3">
         <div class="input-group-prepend">

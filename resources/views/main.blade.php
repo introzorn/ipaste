@@ -35,7 +35,11 @@
 
 
     @endforeach
-
+<center>
+    <div style="display:block; width:max-content">
+ {{$allpasta->links()}}
+    </div>
+</center>
 </div>
 <div class="col-3"> <!-- боковой блок -->
 
@@ -44,7 +48,7 @@
 </div>
 </div>
 
-    {{$allpasta->links()}}
+
 
 
     @include('footer')

@@ -100,7 +100,7 @@
 </div><br>
 
 <a href="{{ route('main') }}" class="btn btn-outline-light btn2"> Главная</a>
-<a href="{{ route('pasteadd') }}" class="btn btn-outline-light btn2">Создать Пасту</a>
+<a href="{{ route('add') }}" class="btn btn-outline-light btn2">Создать Пасту</a>
 <a href="{{ route('about') }}" class="btn btn-outline-light btn2">О проекте</a>
 </div>
 <div class="shapka-title"  style="">

@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'pasteController@MainCont')->name('main');
 
 
-Route::get('/pasteadd', function () {
-    return view('pasteadd');
-})->name('pasteadd');
+Route::get('/add', function () {
+    return view('add');
+})->name('add');
 
-Route::post('/add', 'pasteController@submitPaste')->name('pasteadd2');
+Route::post('/add', 'pasteController@submitPaste')->name('add');
 
 
 Route::get('/about', function () {

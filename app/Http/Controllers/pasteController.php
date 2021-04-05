@@ -82,8 +82,26 @@ public function MainCont(){
 
 
 
+private function GetHash(int $id){
+    $mass=['A','B','C','D','E','F','G','H','I','J'];
+    $kol=ceil(log10($id)); //длинна хэша по id
+    $idstr  =''.$id;
 
-    private function GetHash(int $id){
+    $alias='';
+    if($kol<4){$idstr  ='0000'.$id;    $idstr=substr($idstr, -4, 4);}
+
+     for($u=0;$u<strlen($idstr);$u++){ //навсякий случай добавляем рандомности
+        $alias[$u] =$mass[$idstr[$u]];
+
+      }
+
+      return $alias;
+   }
+
+
+
+
+    private function GetHash2(int $id){
 
     $kol=1+ceil(log10($id)); //длинна хэша по id
 
