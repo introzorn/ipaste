@@ -36,19 +36,22 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-default">Введите имя Пасты</span>
         </div>
-        <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-default" name="pname" id="pname">
+        <input type="text" class="form-control" aria-label="" aria-describedby="inputGroup-sizing-default" name="pname" id="pname" value="{{pcont::AText('pname')}}">
     </div>
 
+    <textarea class="form-control" aria-label=""  style="min-height: 200px; display:none" name="pcode" id="pcode" >{{pcont::AText('pcode')}}</textarea>
     <div class="input-group" id="codebox">
         <script>
+            var cont=$('#pcode').val();
             var stype={"php":"application/x-httpd-php","":""};
             var myCodeMirror = CodeMirror($('#codebox').get(0), {lineNumbers: true,
+                    value: cont,
                     name: 'npcode'
             });
             myCodeMirror.on('change',function(){$("#pcode").val(myCodeMirror.getValue());});
             </script>
 
-        <textarea class="form-control" aria-label=""  style="min-height: 200px; display:none" name="pcode" id="pcode" ></textarea>
+
     </div>
         <br>
 
@@ -60,8 +63,8 @@
 
         <div class="row">
             <div class="col-sm">
-                        <label for="inputState" class="form-label">Оформление пасты</label>
-                        <select id="inputState" class="form-select" name="pcodetype">
+                        <label for="pcodetype" class="form-label">Оформление пасты</label>
+                        <select id="pcodetype" class="form-select" name="pcodetype">
                         <option value="php">PHP</option>
                         <option value="html">HTML</option>
                         <option value="js">JS</option>
@@ -103,8 +106,8 @@
         </div>
 
             <div class="col-sm">
-                <label for="inputState2" class="form-label">Доступна</label>
-                <select id="inputState2" class="form-select" name="expiration">
+                <label for="expiration" class="form-label">Доступна</label>
+                <select id="expiration" class="form-select" name="expiration">
                 <option selected value="0">всегда</option>
                 <option value="10 minutes">10 минут</option>
                 <option value="1 hour">1 Час</option>
@@ -122,6 +125,14 @@
     <center><br><br>
         <button type="submit" class="btn btn-info">Создать пасту</button>
     </center><br><br>
+
+
+    <script>
+        $("#pcodetype").val("{{pcont::AText('pcodetype')}}");
+        $("#expiration").val("{{pcont::AText('expiration')}}");
+        $('input[name=pview][value={{pcont::AText('pview')}}]').prop('checked', true);
+        </script>
+
 
 
 </form>

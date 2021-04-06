@@ -10,10 +10,27 @@ class pasteController extends Controller
 {
     //
     public static $ViewTEXT=['Публичная','Скрытая','Приватная'];
+    public static $AutoTEXT=[];
+
+    public static function AText($key){
+
+            return session()->get($key);
+
+    }
 
     public function submitPaste(Request $r)
     {
         //  dd($r->request);
+
+//немного автозаполнения
+        $r->session()->put('pname', $r->pname);
+        $r->session()->put('pcode', $r->pcode);
+        $r->session()->put('pcodetype', $r->pcodetype);
+        $r->session()->put('pview', $r->pview);
+        $r->session()->put('expiration', $r->expiration);
+
+
+
         $val = $r->validate([
             'pname' => 'required|min:5|max:255',
             'pcode' => 'required|min:5|max:16777215',
@@ -57,6 +74,15 @@ class pasteController extends Controller
         $pasta->save();
 
         $this->ClearPast(); //удаляем просроченные пасты из бд . тут чтобы реже нагружать бд
+
+
+
+        $r->session()->put('pname', '');
+        $r->session()->put('pcode', '');
+        $r->session()->put('pcodetype', '');
+        $r->session()->put('pview', '');
+        $r->session()->put('expiration', '');
+
 
         return redirect()->route('alias', ['alias' => $pasta->alias]);
     }
