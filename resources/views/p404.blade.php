@@ -5,7 +5,7 @@
 
     @include('head')
 
-<div class="abstractcont">
+<div class="abstractcont bl-ver">
 <br><br>
     <div class="tablo" >
         <div class="row">

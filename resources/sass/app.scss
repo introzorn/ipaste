@@ -97,11 +97,19 @@ code.spaces{display: none!important;}
 }
 
 
-.bl-ver{}
+.bl-ver{
+    min-height: calc(100vh - 214px);
+}
 @media (max-width: 760px){
     .bl-ver{
     width: 100%!important;
     display:block!important;
+    }
+    .tablo{
+        left:0;
+        right:auto;
+        width: 100%!important;
+        height: max-content;
     }
 }
 

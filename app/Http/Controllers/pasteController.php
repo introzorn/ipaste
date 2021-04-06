@@ -16,7 +16,7 @@ class pasteController extends Controller
         //  dd($r->request);
         $val = $r->validate([
             'pname' => 'required|min:5|max:255',
-            'pcode' => 'required|min:5',
+            'pcode' => 'required|min:5|max:16777215',
             'pcodetype' => 'required|min:2',
             'pview' => 'required',
             'expiration' => 'required'
@@ -69,12 +69,12 @@ class pasteController extends Controller
         } //на всякий случай проверяем если id пустой
 
         $pasta = new paste;
-        $pdata = $pasta->where('alias', $id)->first();
+        $pdata = $pasta->Where('alias', $id)->first();
         if (!$pdata) {
             return view('p404');
         }   //заглушка если элемент не найден
 
-        if ($pdata->view = 2 && !Auth::check()) {
+        if ($pdata->view == 2 && !Auth::Check()) {
             return view('p404');
         }
 

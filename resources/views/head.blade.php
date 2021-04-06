@@ -89,7 +89,10 @@
 <div style="position:absolute; display:block; z-index:-1; margin:auto; left:0px; bottom:-350px; width:100%; height:200px; background-image: linear-gradient(rgb(241, 241, 241,0), rgba(241,241,241));">
 </div>
 
-
+<div class="shapka-title"  style="">
+    <b>[i]paste</b>
+    <i style="font-size:12pt;"><br/>сервис публикации текстов и кодов</i>
+</div>
 
 
 
@@ -115,10 +118,7 @@
 @if (Auth::Check())
 <a href="{{ route('mypaste') }}" class="btn btn-outline-light btn2">Мои пасты</a>
 @endif
-<a href="{{ route('about') }}" class="btn btn-outline-light btn2">О проекте</a>
+
 </div>
-<div class="shapka-title"  style="">
-    <b>[i]paste</b>
-    <i style="font-size:12pt;"><br/>сервис публикации текстов и кодов</i>
-</div>
+
 </div>

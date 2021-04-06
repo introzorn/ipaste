@@ -21,7 +21,7 @@ Route::get('/login', function () {
 
     return view('login');
 })->name('login');
-Route::post('/login', 'loginController@login')->name('login');
+Route::post('/login', 'LoginController@login')->name('login');
 
 
 Route::get('/reg', function () {
@@ -29,8 +29,8 @@ Route::get('/reg', function () {
     return view('reg');
 })->name('reg');
 
-Route::post('/reg', 'loginController@reg')->name('reg');
-Route::get('/logout', 'loginController@logout')->name('logout');
+Route::post('/reg', 'LoginController@reg')->name('reg');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
 Route::get('/', 'pasteController@MainCont')->name('main');

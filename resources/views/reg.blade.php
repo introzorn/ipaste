@@ -5,7 +5,7 @@
 
     @include('head')
 
-<div class="abstractcont">
+<div class="abstractcont bl-ver">
 <br><br>
     <div class="tablo" style="width:400px;padding-left:30px; padding-right:30px;" >
         <form action="{{route('reg')}}" method="POST">

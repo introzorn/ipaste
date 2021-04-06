@@ -27,7 +27,10 @@
             </div>
             <div class="col-sm">
                   Создана: {{ date("d.m.y H:i",$lpasta->utime) }}<br>
-                  Доступ до: {{ date("d.m.y H:i",$lpasta->expiration) }}<br>
+                  @if ($lpasta->expiration>0)
+                     Доступ до: {{ date("d.m.y H:i",$lpasta->expiration) }}<br>
+                  @endif
+
             </div>
             <div class="col-sm">
               <a class="btn btn-primary" style="float:right; margin:10px" href="{{route('alias',$lpasta->alias)}}" role="button">Посмотреть»</a>

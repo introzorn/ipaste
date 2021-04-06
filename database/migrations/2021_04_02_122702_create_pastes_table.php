@@ -18,7 +18,7 @@ class CreatePastesTable extends Migration
             $table->char('alias',16);
             $table->char('user',16);
             $table->char('name',255);
-            $table->text('code');
+            $table->mediumText('code');
             $table->char('codetype',6);
             $table->integer('view');
             $table->integer('utime');
