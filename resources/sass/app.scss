@@ -23,6 +23,7 @@ body{
     line-height:0.5;
 }
 .btn2{
+
     text-shadow:0px 0px 5px black,0px 0px 10px black ;
     background-color:#00000023;
 }
@@ -111,6 +112,7 @@ code.spaces{display: none!important;}
         width: 100%!important;
         height: max-content;
     }
+    .btn2{padding-left:2px;padding-right:2px}
 }
 
 .vcol0{color: blue!important;}
