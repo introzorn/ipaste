@@ -4,7 +4,7 @@
 
 
 @foreach (pcont::getMyLastPaste() as $mpasta)
-<div class="alert alert-dark" role="alert" style="padding:5px!important; margin: 2px">
+<div class="alert btn-light" role="alert" style="padding:5px!important; margin: 2px">
    <div style="text-overflow: ellipsis;font-size:10pt; width:100%; overflow:hidden; white-space: nowrap;"> <b>{{$mpasta->name}}</b></div>
 
     <div class="row">
@@ -12,7 +12,7 @@
 
 
             Дата создания: {{ date("d.m.Y",$mpasta->utime) }}<br>
-            Тип Пасты: {{ $mpasta->codetype }}
+           <span class="vcol{{$mpasta->view}}">Паста {{pcont::$ViewTEXT[$mpasta->view]}}/{{ pcont::PLtoTXT($mpasta->codetype) }}</span>
 
 
         </div>

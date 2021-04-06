@@ -1,5 +1,5 @@
 @extends('html')
-@section('main-title')О сервисе пасты@endsection
+@section('main-title')Регистрация Пользователя@endsection
 
 @section('content')
 

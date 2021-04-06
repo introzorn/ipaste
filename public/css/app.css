@@ -89,6 +89,7 @@ body {
   min-height: 150px !important;
   height: 150px !important;
   margin: 0 !important;
+  overflow: hidden !important;
 }
 
 code.spaces {
@@ -130,5 +131,29 @@ code.spaces {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.h44 {
+  color: white;
+  text-shadow: 0px 0px 5px black, 0px 0px 10px black, 0px 0px 15px black;
+}
+
+@media (max-width: 760px) {
+  .bl-ver {
+    width: 100% !important;
+    display: block !important;
+  }
+}
+
+.vcol0 {
+  color: blue !important;
+}
+
+.vcol1 {
+  color: grey !important;
+}
+
+.vcol2 {
+  color: black !important;
 }
 

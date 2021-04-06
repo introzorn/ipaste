@@ -14,10 +14,10 @@
     @include('head')
 
     <div class="container cont1">
-        <div class="row"><div class="col-9"><!-- основной блок-->
+        <div class="row"><div class="col-9 bl-ver"><!-- основной блок-->
 
 
-
+<h3  class="h44">Создать новую пасту</h3>
 
 @error('pname')
     <div class="alert alert-danger" style="padding:0 20px 0 20px; margin:5px">Ошибка: Имя пасты должно быть больше 5 символов и меньше 255</div>
@@ -60,27 +60,31 @@
 
         <div class="row">
             <div class="col-sm">
-                        <label for="inputState" class="form-label">Оформление кода</label>
+                        <label for="inputState" class="form-label">Оформление пасты</label>
                         <select id="inputState" class="form-select" name="pcodetype">
-                        <option selected value="php">PHP</option>
+                        <option value="php">PHP</option>
                         <option value="html">HTML</option>
                         <option value="js">JS</option>
                         <option value="css">CSS</option>
-                        <option value="plain">TEXT</option>
+                        <option selected value="plain">TEXT</option>
                         </select>
            </div>
           <div class="col-sm" id="select_v">
             <label for="select_v" class="form-label">Область видимости</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="pview" id="flexRadioDisabled"  value="1">
-                <label class="form-check-label" for="flexRadioDisabled">
-                Только по ссылке
-                </label>
-            </div>
+
+
+
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="pview" id="flexRadioCheckedDisabled" checked value="0">
                 <label class="form-check-label" for="flexRadioCheckedDisabled"  >
                 Публичная паста
+                </label>
+            </div>
+
+             <div class="form-check">
+                <input class="form-check-input" type="radio" name="pview" id="flexRadioDisabled"  value="1">
+                <label class="form-check-label" for="flexRadioDisabled">
+                Только по ссылке
                 </label>
             </div>
 
@@ -124,7 +128,7 @@
 
 
 </div>
-<div class="col-3"> <!-- боковой блок -->
+<div class="col-3 bl-ver"> <!-- боковой блок -->
 
 @include('rblock')
 </div>

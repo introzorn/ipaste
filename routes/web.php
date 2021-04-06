@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\pasteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -13,11 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/mypaste', function () {
-    if(!Auth::check()){return redirect(route('main'));} //а если не залогинился
-
-    return view('mypaste');
-})->name('mypaste');
+Route::get('/mypaste', 'pasteController@UserCont')->name('mypaste');
 
 Route::get('/login', function () {
     if(Auth::check()){return redirect(route('main'));} //а может пользователь уже залогинился
