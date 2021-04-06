@@ -13,8 +13,14 @@ class pasteController extends Controller
     public static $AutoTEXT=[];
 
     public static function AText($key){
+        $val=session()->get($key);
+        if($val==''){
+            if($key=='pcodetype'){$val='plain';}
+            if($key=='pview'){$val=0;}
+            if($key=='expiration'){$val=0;}
+        }
 
-            return session()->get($key);
+        return $val;
 
     }
 
