@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::post('/find', 'pasteController@FindPaste')->name('find');
+
 Route::get('/mypaste', 'pasteController@UserCont')->name('mypaste');
 
 Route::get('/login', function () {

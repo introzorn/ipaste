@@ -97,7 +97,7 @@
 
 
   <div style="position:absolute; display:block; z-index:1; margin:auto; right:20px; top:50px;">
-<div style="text-align:right" class="link-light fs-6 ">
+<div style="text-align:right" class="link-light fs-6 tabba">
 
 
 @if (Auth::Check())
@@ -122,3 +122,77 @@
 </div>
 
 </div>
+<!-- ПОИСКОВАЯ ФОРМА-->
+<div class="find-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" height="13pt" version="1.1" viewBox="-1 0 136 136.21852" width="13pt" id="fi_1086933">
+        <g id="surface1">
+        <path d="M 93.148438 80.832031 C 109.5 57.742188 104.03125 25.769531 80.941406 9.421875 C 57.851562 -6.925781 25.878906 -1.460938 9.53125 21.632812 C -6.816406 44.722656 -1.351562 76.691406 21.742188 93.039062 C 38.222656 104.707031 60.011719 105.605469 77.394531 95.339844 L 115.164062 132.882812 C 119.242188 137.175781 126.027344 137.347656 130.320312 133.269531 C 134.613281 129.195312 134.785156 122.410156 130.710938 118.117188 C 130.582031 117.980469 130.457031 117.855469 130.320312 117.726562 Z M 51.308594 84.332031 C 33.0625 84.335938 18.269531 69.554688 18.257812 51.308594 C 18.253906 33.0625 33.035156 18.269531 51.285156 18.261719 C 69.507812 18.253906 84.292969 33.011719 84.328125 51.234375 C 84.359375 69.484375 69.585938 84.300781 51.332031 84.332031 C 51.324219 84.332031 51.320312 84.332031 51.308594 84.332031 Z M 51.308594 84.332031 " style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;"></path>
+        </g>
+        </svg>Поиск</div>
+
+<div class="find-podlojka"></div>
+<div class="find-form">
+
+<form action="{{route('find')}}" method="post">
+@csrf
+<div class="form-group">
+  <label for="">Найти в пастах</label>
+  <input type="text" class="form-control" name="find" id="" aria-describedby="helpId" placeholder="" maxlength="255" value="{{$retreq['find']??''}}">
+  <small id="helpId" class="form-text text-muted" >Введите текст который вы желаете найти а также укажите параметры поиска</small>
+</div>
+<br>
+
+<div class="row">
+    <div class="col col-roling">
+        <div class="form-check">
+        <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="inname" id="" value="checked" {{$retreq['inname']??'checked'}}>
+        Поиск в именах
+        </label>
+        </div>
+        <div class="form-check">
+        <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="incode" id="" value="checked"  {{$retreq['incode']??''}}>
+        Поиск в содержимом
+        </label>
+        </div>
+
+    </div>
+    <div class="col col-roling">
+
+<button type="submit" class="btn btn-lg btn-info find-btn2" style="color:white">Найти ></button>
+
+    </div>
+</div>
+
+
+
+
+
+</form>
+
+<script>
+$(".find-btn").click(function(){
+    var hef = $(".find-form").height()+70;
+    $("html body").css("overflow","hidden");
+    $(".find-podlojka").css("display","block").stop().animate({"opacity":"1"},500);
+    $("html body").stop().animate({"marginTop": (hef/2)+ "px"},700,'easeInOutCubic');
+    $(".find-form").css({"top": (0-hef)+"px","display":"block"}).stop().animate({"top":"0px"},700,'easeInOutCubic');
+
+
+});
+
+$(".find-podlojka").click(function(){
+    var hef = $(".find-form").height()+70;
+    $(".find-podlojka").stop().animate({"opacity":"0"},700,  function(){$(this).css("display","none");});
+    $("html body").stop().animate({"marginTop": "0px"},600);
+    $(".find-form").stop().animate({"top":(0-hef-50)+"px"},700,function(){$(this).css("display","none");  $("html body").css("overflow","");});
+});
+
+
+</script>
+
+
+
+</div>
+

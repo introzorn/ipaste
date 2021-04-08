@@ -113,8 +113,74 @@ code.spaces{display: none!important;}
         height: max-content;
     }
     .btn2{padding-left:2px;padding-right:2px}
+
+    .find-btn{
+    width:auto!important;
+    left:50px!important;
+    right:50px!important;
+    font-size: 15pt;
+    font-weight: bold;
+    }
+    .col-roling{
+        display:block!important;
+        width:100%!important;
+        flex:none;
+    }
+    .find-btn2{width:100%; float:none}
+    .tabba{
+        margin-top: -10px; padding-bottom:10px;
+    }
 }
 
 .vcol0{color: blue!important;}
 .vcol1{color:grey!important;}
 .vcol2{color:black!important;}
+
+.find-btn{
+    width:150px;
+    background-color:white;
+    border-radius:0 0 10px 10px  ;
+    display:block;
+    position:absolute;
+    margin:auto;
+    top:0px;
+    left:0;
+    right:0;
+    cursor:pointer;
+    text-align:center;
+    font-weight: bold;
+
+
+}
+.find-podlojka{
+    background-color:rgba(0,0,0,0.3);
+    position:fixed;
+    display:block;
+    margin:auto;
+    left:0;
+    right: 0;
+    top:0;
+    bottom:0;
+    z-index:999999;
+    display:none;
+    opacity:0;
+}
+.find-form{
+    background-color:white;
+    position:fixed;
+    display:block;
+    margin:auto;
+    left:0;
+    right: 0;
+    top:0;
+    z-index:999999;
+    height:max-content;
+    padding:30px;
+    box-shadow: 0px 0px 30px black, 0px 0px 30px black;
+    display:none;
+}
+
+.find-btn2{
+    float:right;
+    margin-top:20px
+}

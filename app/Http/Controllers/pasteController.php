@@ -167,7 +167,7 @@ class pasteController extends Controller
 
 
 
-    public function MainCont()
+    public function MainCont() //все пасты
     {
 
         $udat = strtotime("+0");
@@ -179,7 +179,7 @@ class pasteController extends Controller
         return view('main', ['allpasta' => $allpasta]);
     }
 
-    public function UserCont()
+    public function UserCont() //пасты ползователя
     {
         if (!Auth::Check()) {
             return redirect(route('main'));
@@ -192,6 +192,57 @@ class pasteController extends Controller
         $allpasta->setPath('');
         return view('mypaste', ['allpasta' => $allpasta]);
     }
+
+
+    public function FindPaste(Request $r){ //поиск
+
+        $find=trim($r->get("find",""));
+        $inname=$r->get("inname","");
+        $incode=$r->get("incode","");
+        $retreq=['find'=>$find,'inname'=>$inname,'incode'=>$incode];
+
+
+        if($find=='' || ($inname=='' && $incode=='')){
+            return view('find', ['finditem' => [], 'retreq'=>$retreq, 'notresult'=>'1']);
+
+        }//проверяем на вакум
+
+
+        $finda=explode(' ',$find);
+
+        $dop =[];
+        for($i=0;$i<sizeof($finda);$i++){
+            if(strlen($finda[$i])>5){
+                $l=strlen($finda[$i]);
+                array_push($dop,mb_substr($finda[$i], 0, $l - 1),mb_substr($finda[$i], 0, $l - 2));
+            }
+
+        }
+
+        $fmass=array_merge($finda, $dop);
+
+        $fmodel1=new paste();
+
+        if ($inname=='checked'){
+            for($i=0;$i<sizeof($fmass);$i++){
+                $fmodel1=$fmodel1->orwhere('name', 'LIKE', '%'.$fmass[$i].'%');
+            }
+        }
+        if ($incode=='checked'){
+            for($i=0;$i<sizeof($fmass);$i++){
+                $fmodel1=$fmodel1->orwhere('code', 'LIKE', '%'.$fmass[$i].'%');
+            }
+        }
+
+
+        $udat = strtotime("+0");
+        $finditem=  $fmodel1->where('view', 0, function ($rw, $udat) {
+            $rw->Where('expiration', '>', $udat)->orWhere('expiration', 0)->get();
+        })->orderBy('id', 'desc')->paginate(10);
+
+        return view('find', ['finditem' => $finditem, 'retreq'=>$retreq]);
+    }
+
 
 
 
