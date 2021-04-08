@@ -46,7 +46,7 @@
     @endforeach
 <center>
     <div style="display:block; width:max-content">
-@if(!$notresult)
+@if(!$notresult=='1')
  {{$finditem->links()}}
 @endif
     </div>

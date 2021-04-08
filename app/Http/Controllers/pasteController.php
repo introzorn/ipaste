@@ -240,7 +240,7 @@ class pasteController extends Controller
             $rw->Where('expiration', '>', $udat)->orWhere('expiration', 0)->get();
         })->orderBy('id', 'desc')->paginate(10);
 
-        return view('find', ['finditem' => $finditem, 'retreq'=>$retreq]);
+        return view('find', ['finditem' => $finditem, 'retreq'=>$retreq, 'notresult'=>'1']);
     }
 
 
